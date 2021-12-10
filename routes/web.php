@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 
 
 
-Route::get('profile', [UserController::class, 'dashboard']); 
+Route::get('', [UserController::class, 'dashboard']); 
 Route::get('login', [UserController::class, 'index'])->name('login');
 Route::post('custom-login', [UserController::class, 'Login'])->name('login.custom'); 
 Route::get('register', [UserController::class, 'registration'])->name('register-user');

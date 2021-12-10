@@ -17,10 +17,16 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->text('img')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+    
+
+        
     }
 
     /**
@@ -30,6 +36,20 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        // Schema::table('users', function ( $table) {
+        //     $table->dropColumn('user_id');
+        // });
+
+       
     }
+
+
+    
+
+
+
+
+
+
+
 }

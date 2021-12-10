@@ -31,7 +31,7 @@ class UserController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('profile')
+            return redirect()->intended()
                         ->withSuccess('Signed in');
         }
   
@@ -67,7 +67,7 @@ class UserController extends Controller
 
         $user->save();
          
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect('login')->withSuccess('You have signed-in');
     }
 
 
