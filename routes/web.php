@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\FollowerController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,9 @@ Route::get('register', [UserController::class, 'registration'])->name('register-
 Route::post('custom-registration', [UserController::class, 'Register'])->name('register.custom'); 
 Route::get('signout', [UserController::class, 'signOut'])->name('signout');
 
+
+
+Route::post('follow/{id}', [FollowerController::class, 'SendRequest'])->name('follow'); 
 
 
 

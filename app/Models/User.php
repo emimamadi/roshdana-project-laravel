@@ -45,14 +45,19 @@ class User extends Authenticatable
     ];
 
 
-    public function followpost(){
 
-        return $this->hasOneThrough(post::class,follow::class);
+    public function follow(){
+        return $this->hasOne(follows::class,'user_id','id');
     }
 
-    public function userpost(){
+    // public function followpost(){
 
-        return $this->hasOneThrough(post_user::class,user::class);
-    }
+    //     return $this->hasOneThrough(post::class,follow::class);
+    // }
+
+    // public function userpost(){
+
+    //     return $this->hasOneThrough(post_user::class,user::class);
+    // }
 }
 

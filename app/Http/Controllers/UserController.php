@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\follows;
 
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -77,7 +80,21 @@ class UserController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+
+            // $users = DB::table('users')
+            // ->whereNotIn('id', [Auth::user()->id])
+            //         ->get();
+
+            $users = User::whereNotIn('id', [Auth::user()->id])
+                   ->get();
+
+                 
+            // $follow=$users->user_id;
+            // dd($follow);
+            dd($users);
+
+
+            return view('dashboard',compact('users'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

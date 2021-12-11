@@ -16,11 +16,25 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Members
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            @if(!empty($users))
+            @foreach($users as $user)
+
+
+
+          <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            @csrf
+         
+            <li>{{$user->name}}<input type="submit" class="" value="Requested Friend"></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_id" value={{Auth::user()->id}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_name" value={{Auth::user()->name}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_id" value={{$user->id}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_name" value={{$user->name}}></li>
+          </form>
+            @endforeach
+            @endif
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
