@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserId1ToFollows extends Migration
+class CreateUserPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddUserId1ToFollows extends Migration
      */
     public function up()
     {
-        Schema::table('follows', function (Blueprint $table) {
+        Schema::create('user_posts', function (Blueprint $table) {
+            $table->id();
+            $table->integer('post_id');
             $table->integer('user_id');
+            $table->integer('like')->nullable();
+            $table->text('comment')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddUserId1ToFollows extends Migration
      */
     public function down()
     {
-        Schema::table('follows', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('user_posts');
     }
 }

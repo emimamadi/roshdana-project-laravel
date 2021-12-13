@@ -91,7 +91,7 @@ class UserController extends Controller
                  
             // $follow=$users->user_id;
             // dd($follow);
-            dd($users);
+            // dd($users);
 
 
             return view('dashboard',compact('users'));

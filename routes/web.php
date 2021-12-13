@@ -24,11 +24,11 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('', [UserController::class, 'dashboard']); 
-Route::get('login', [UserController::class, 'index'])->name('login');
-Route::post('custom-login', [UserController::class, 'Login'])->name('login.custom'); 
-Route::get('register', [UserController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [UserController::class, 'Register'])->name('register.custom'); 
-Route::get('signout', [UserController::class, 'signOut'])->name('signout');
+Route::get('login', [UserController::class, 'index']);
+Route::post('postlogin', [UserController::class, 'Login'])->name('login.custom'); 
+Route::get('register', [UserController::class, 'registration']);
+Route::post('postregistration', [UserController::class, 'Register'])->name('register.custom'); 
+Route::get('signout', [UserController::class, 'signOut']);
 
 
 

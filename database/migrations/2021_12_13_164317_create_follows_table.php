@@ -15,10 +15,10 @@ class CreateFollowsTable extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->integer('follower_id');
-            $table->integer('folowing_id');
-            $table->string('status');
-
+            $table->integer('follower_id')->nullable();
+            $table->integer('following_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
