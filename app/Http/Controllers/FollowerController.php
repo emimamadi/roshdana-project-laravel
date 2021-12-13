@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\follows;
+use App\Models\follow;
 
 class FollowerController extends Controller
 {
@@ -14,9 +14,9 @@ class FollowerController extends Controller
 
    
 
-        $follows=new follows();
+        $follows=new follow();
         $follows->user_id=$request->input('sender_id');
-        $follows->folowing_id=$request->input('reciever_id');
+        $follows->following_id=$request->input('reciever_id');
         $follows->follower_id="0";
         $follows->status="pending";
 

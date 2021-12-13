@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\DB;
 
+// use Illuminate\Database\Eloquent\Model;
+
 class UserController extends Controller
 {
 
@@ -91,8 +93,12 @@ class UserController extends Controller
                  
             // $follow=$users->user_id;
             // dd($follow);
-            // dd($users);
 
+            // $collection = Model::with('user', 'nested.relation')->get();
+
+            // dd($collection);
+
+            dd($users->follows);
 
             return view('dashboard',compact('users'));
         }
