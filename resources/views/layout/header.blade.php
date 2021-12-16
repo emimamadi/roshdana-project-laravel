@@ -21,10 +21,31 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             @if(!empty($users))
             @foreach($users as $user)
+            @foreach($users_req as $user_req)
+            @foreach($users_acc as $user_acc)
+
+
+            @if(($user->name==$user_req->name) && ($user->name==$user_acc->name))
+
+            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            @csrf
+         
+            <li>{{$user->name}}<input type="submit" class="" value="Friend"></li>
+
+
+            @elseif ($user->name==$user_req->name)
+
+            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            @csrf
+         
+            <li>{{$user->name}}<input type="submit" class="" value="Pending Friend"></li>
+
+
+            @elseif ($user->name!=$user_req->name)
 
 
 
-          <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
             @csrf
          
             <li>{{$user->name}}<input type="submit" class="" value="Requested Friend"></li>
@@ -33,6 +54,13 @@
             <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_id" value={{$user->id}}></li>
             <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_name" value={{$user->name}}></li>
           </form>
+
+
+
+
+            @endif
+            @endforeach
+            @endforeach
             @endforeach
             @endif
             <li><hr class="dropdown-divider"></li>
