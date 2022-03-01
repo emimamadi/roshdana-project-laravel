@@ -1,0 +1,5 @@
+      
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_id" value={{Auth::user()->id}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_name" value={{Auth::user()->name}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_id" value={{$user->id}}></li>
+            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_name" value={{$user->name}}></li>

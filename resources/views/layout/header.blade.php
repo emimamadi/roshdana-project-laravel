@@ -19,50 +19,68 @@
             Members
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            @if(!empty($users))
-            @foreach($users as $user)
-            @foreach($users_req as $user_req)
+          
+            
+            
+          
+
+            @if(!empty($users_acc))
             @foreach($users_acc as $user_acc)
 
-
-            @if(($user->name==$user_req->name) && ($user->name==$user_acc->name))
-
-            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            <form action="{{ route('follow',['id'=>$user_acc->id]) }}"  method="POST">
             @csrf
          
-            <li>{{$user->name}}<input type="submit" class="" value="Friend"></li>
+            <li>{{$user_acc->name}} <input type="submit" class="btn-success rounded" value="Friend"></li>
 
+            @endforeach
 
-            @elseif ($user->name==$user_req->name)
+            @endif
 
-            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            @if(!empty($users_req))
+            @foreach($users_req as $user_req)
+            
+
+            <form action="{{ route('follow',['id'=>$user_req->id]) }}"  method="POST">
             @csrf
          
-            <li>{{$user->name}}<input type="submit" class="" value="Pending Friend"></li>
+            <li>{{$user_req->name}} <input type="submit" class="btn-warning rounded" value="Pending Friend"></li>
 
 
-            @elseif ($user->name!=$user_req->name)
+            @endforeach
+            @endif
 
 
+            @if(!empty($other_users))
 
-            <form action="{{ route('follow',['id'=>$user->id]) }}"  method="POST">
+            @foreach($other_users as $other_user)
+
+
+            <form action="{{ route('follow',['id'=>$other_user->id]) }}"  method="POST">
             @csrf
          
-            <li>{{$user->name}}<input type="submit" class="" value="Requested Friend"></li>
-            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_id" value={{Auth::user()->id}}></li>
-            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="sender_name" value={{Auth::user()->name}}></li>
-            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_id" value={{$user->id}}></li>
-            <li style="display:none;">{{$user->name}}<input type="hidden" class="" name="reciever_name" value={{$user->name}}></li>
+            <li>{{$other_user->name}} <input type="submit" class=" btn-primary rounded" value="Follow"></li>
+
+
+
+
+
+
+
+
+      
+
+            @endforeach
+            @endif
+         
           </form>
 
 
 
 
-            @endif
-            @endforeach
-            @endforeach
-            @endforeach
-            @endif
+         
+            
+          
+            
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
